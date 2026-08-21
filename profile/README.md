@@ -267,9 +267,11 @@ Esses pontos fazem parte do problema que estamos tentando resolver, não são de
 
 ---
 
-## 👥 Time
+<div align="center">
 
-<div align="space-around">
+<table>
+<tr>
+<td valign="top">
 
 | |
 |---|
@@ -280,6 +282,9 @@ Esses pontos fazem parte do problema que estamos tentando resolver, não são de
 | **Fernando Neto Zaia** |
 | **Sofia Deolim Fernandes** |
 
+</td>
+<td valign="top">
+
 | |
 |---|
 | **Júlia Fonseca Watanabe** |
@@ -288,6 +293,10 @@ Esses pontos fazem parte do problema que estamos tentando resolver, não são de
 | **Marcella de Liberal Alves** |
 | **Nicolas Vlad Koyama de Oliveira** |
 | **Verena Marostica Marcelino** |
+
+</td>
+</tr>
+</table>
 
 </div>
 
