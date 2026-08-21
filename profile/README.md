@@ -280,6 +280,15 @@ Esses pontos fazem parte do problema que estamos tentando resolver, não são de
 | **Fernando Neto Zaia** |
 | **Sofia Deolim Fernandes** |
 
+| |
+|---|
+| **Júlia Fonseca Watanabe** |
+| **Lucas Cayres Porto** |
+| **Lucas de Carvalho Ramos** |
+| **Marcella de Liberal Alves** |
+| **Nicolas Vlad Koyama de Oliveira** |
+| **Verena Marostica Marcelino** |
+
 </div>
 
 ---
