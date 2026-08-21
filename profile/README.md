@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🟨 OUROS
+#  OUROS
 
 ### Dados que transformam sustentabilidade em vantagem competitiva.
 
