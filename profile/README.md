@@ -134,22 +134,8 @@ Para a empresa, ele também pode facilitar consultas sobre desempenho e informa�
 
 ---
 
-## 📊 Ouros em números
 
-<!-- STATS:START -->
-<div align="center">
 
-| 👥 Equipe | 📦 Repositórios | 🧑‍💻 Linguagens | 📝 Linhas de código |
-|:---:|:---:|:---:|:---:|
-| **6** | `carregando...` | `carregando...` | `carregando...` |
-
-</div>
-
-<!-- STATS:END -->
-
-> A equipe original do projeto possui **6 integrantes**. As demais métricas podem ser atualizadas automaticamente usando a GitHub API.
-
----
 
 ## 💻 Stack
 
