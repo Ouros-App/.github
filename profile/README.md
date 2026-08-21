@@ -267,6 +267,8 @@ Esses pontos fazem parte do problema que estamos tentando resolver, não são de
 
 ---
 
+## 👥 Time
+
 <div align="center">
 
 <table>
