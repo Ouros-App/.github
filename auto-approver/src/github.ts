@@ -22,6 +22,11 @@ export async function installationOctokit(installationId: number): Promise<Octok
   return new Octokit({ auth: token });
 }
 
+export async function canRunAutoReview(octokit: Octokit, owner: string, repo: string, login: string): Promise<boolean> {
+  const { data } = await octokit.repos.getCollaboratorPermissionLevel({ owner, repo, username: login });
+  return ["admin", "maintain", "push"].includes(data.permission);
+}
+
 export async function getPullAndDiff(octokit: Octokit, ctx: PullContext) {
   const { data: pull } = await octokit.pulls.get({
     owner: ctx.owner,
@@ -56,7 +61,7 @@ export async function checkCiAndSonar(octokit: Octokit, ctx: PullContext, sha: s
 
   for (const run of checkRuns.check_runs) {
     const name = run.name.toLowerCase();
-    const isSonar = config.SONAR_IDENTIFIERS.some(id => name.includes(id));
+    const isSonar = config.SONAR_IDENTIFIERS.some((id: string) => name.includes(id));
     const conclusion = run.conclusion;
 
     if (run.status !== "completed") {
@@ -107,7 +112,7 @@ export async function checkReviewsAndThreads(octokit: Octokit, ctx: PullContext)
 
   const coderabbitReviews = reviews.filter(r => {
     const login = r.user?.login?.toLowerCase() ?? "";
-    return config.CODERABBIT_LOGINS.some(id => login === id || login.includes("coderabbit"));
+    return config.CODERABBIT_LOGINS.some((id: string) => login === id || login.includes("coderabbit"));
   });
   if (coderabbitReviews.some(r => r.state?.toUpperCase() === "CHANGES_REQUESTED")) {
     blockers.push("CodeRabbit requested changes.");
@@ -141,8 +146,8 @@ export async function checkReviewsAndThreads(octokit: Octokit, ctx: PullContext)
     if (thread.isResolved) continue;
     const comments = thread.comments?.nodes ?? [];
     const authors = comments.map((c: any) => String(c.author?.login ?? "").toLowerCase());
-    const fromCodeRabbit = authors.some((a: string) => config.CODERABBIT_LOGINS.some(id => a === id || a.includes("coderabbit")));
-    const fromSonar = authors.some((a: string) => config.SONAR_IDENTIFIERS.some(id => a.includes(id)));
+    const fromCodeRabbit = authors.some((a: string) => config.CODERABBIT_LOGINS.some((id: string) => a === id || a.includes("coderabbit")));
+    const fromSonar = authors.some((a: string) => config.SONAR_IDENTIFIERS.some((id: string) => a.includes(id)));
 
     if (fromCodeRabbit || fromSonar) {
       blockers.push(`Unresolved ${fromCodeRabbit ? "CodeRabbit" : "Sonar"} review thread.`);

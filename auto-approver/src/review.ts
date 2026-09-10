@@ -33,7 +33,7 @@ export async function runAutoReview(ctx: PullContext) {
   const warnings: string[] = [];
 
   if (pull.draft) blockers.push("Pull request is still a draft.");
-  if (pull.mergeable === false) blockers.push("Pull request currently has merge conflicts.");
+  if (pull.mergeable !== true) blockers.push("Pull request mergeability is not confirmed.");
 
   const [ci, reviews] = await Promise.all([
     checkCiAndSonar(octokit, ctx, initialSha),

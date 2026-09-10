@@ -16,7 +16,7 @@ const schema = z.object({
   COMMAND: z.string().default("/auto-review"),
   CODERABBIT_LOGINS: z.string().default("coderabbitai,coderabbitai[bot]"),
   SONAR_IDENTIFIERS: z.string().default("sonar,sonarqube,sonarcloud")
-}).superRefine((env, ctx) => {
+}).superRefine((env: { NIM_API_KEY_1?: string; NIM_API_KEY?: string }, ctx: z.RefinementCtx) => {
   if (!env.NIM_API_KEY_1 && !env.NIM_API_KEY) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["NIM_API_KEY_1"], message: "Set NIM_API_KEY_1 (preferred) or legacy NIM_API_KEY" });
   }
@@ -32,6 +32,6 @@ export const config = {
   ...env,
   GITHUB_PRIVATE_KEY: env.GITHUB_PRIVATE_KEY.replace(/\\n/g, "\n"),
   NIM_API_KEYS: nimApiKeys,
-  CODERABBIT_LOGINS: env.CODERABBIT_LOGINS.split(",").map(v => v.trim().toLowerCase()).filter(Boolean),
-  SONAR_IDENTIFIERS: env.SONAR_IDENTIFIERS.split(",").map(v => v.trim().toLowerCase()).filter(Boolean)
+  CODERABBIT_LOGINS: env.CODERABBIT_LOGINS.split(",").map((v: string) => v.trim().toLowerCase()).filter(Boolean),
+  SONAR_IDENTIFIERS: env.SONAR_IDENTIFIERS.split(",").map((v: string) => v.trim().toLowerCase()).filter(Boolean)
 };
